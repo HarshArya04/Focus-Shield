@@ -1,215 +1,92 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Focus Shield</title>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Mono:wght@700&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Mono:wght@700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            width: 300px; /* Made wider */
+            padding: 15px;
+            text-align: center;
+        }
+        img { width: 50px; height: 50px; margin-bottom: 10px; }
+        h3 { font-size: 18px; font-weight: 600; margin: 0 0 15px 0; }
+        
+        /* Clock Style */
+        #timer-display { display: flex; justify-content: center; align-items: center; margin-bottom: 15px; }
+        .time-box { font-family: 'Roboto Mono', monospace; font-size: 28px; font-weight: 700; color: #d93025; background-color: #f0f0f0; padding: 10px 8px; border-radius: 5px; margin: 0 2px; min-width: 20px; }
+        .separator { font-family: 'Roboto Mono', monospace; font-size: 28px; font-weight: 700; color: #d93025; padding: 0 2px; }
+        
+        /* --- NEW: Updated Status Styles --- */
+        #active-status, #setup-status {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        #active-status { color: #d93025; } /* "ON" color */
+        #setup-status { color: #4CAF50; } /* "OFF" color */
+        /* --- End New Styles --- */
 
-      body {
-        font-family: "Poppins", sans-serif;
-        width: 300px; /* Made wider */
-        padding: 15px;
-        text-align: center;
-      }
-      img {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 10px;
-      }
-      h3 {
-        font-size: 18px;
-        font-weight: 600;
-        margin: 0 0 15px 0;
-      }
+        input[type="number"] { width: 100%; padding: 10px; box-sizing: border-box; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 15px; font-family: 'Poppins', sans-serif; text-align: center; }
+        
+        button { width: 100%; padding: 12px; font-size: 16px; font-family: 'Poppins', sans-serif; font-weight: 600; border: none; border-radius: 8px; color: white; cursor: pointer; transition: background-color 0.2s; }
+        button#startButton { background-color: #4CAF50; }
+        button#startButton:hover { background-color: #409143; }
+        button#stopButton { background-color: #d93025; }
+        button#stopButton:hover { background-color: #b0261f; }
 
-      /* Clock Style */
-      #timer-display {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 15px;
-      }
-      .time-box {
-        font-family: "Roboto Mono", monospace;
-        font-size: 28px;
-        font-weight: 700;
-        color: #d93025;
-        background-color: #f0f0f0;
-        padding: 10px 8px;
-        border-radius: 5px;
-        margin: 0 2px;
-        min-width: 20px;
-      }
-      .separator {
-        font-family: "Roboto Mono", monospace;
-        font-size: 28px;
-        font-weight: 700;
-        color: #d93025;
-        padding: 0 2px;
-      }
+        .hidden { display: none; }
 
-      #status {
-        font-size: 14px;
-        font-weight: 600;
-        margin-bottom: 15px;
-        color: #4caf50;
-      }
-      #status.on {
-        color: #d93025;
-      } /* For indefinite focus */
-
-      input[type="number"] {
-        width: 100%;
-        padding: 10px;
-        box-sizing: border-box;
-        border: 2px solid #ddd;
-        border-radius: 8px;
-        margin-bottom: 15px;
-        font-family: "Poppins", sans-serif;
-        text-align: center;
-      }
-
-      button {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-        font-family: "Poppins", sans-serif;
-        font-weight: 600;
-        border: none;
-        border-radius: 8px;
-        color: white;
-        cursor: pointer;
-        transition: background-color 0.2s;
-      }
-      button#startButton {
-        background-color: #4caf50;
-      }
-      button#startButton:hover {
-        background-color: #409143;
-      }
-      button#stopButton {
-        background-color: #d93025;
-      }
-      button#stopButton:hover {
-        background-color: #b0261f;
-      }
-
-      .hidden {
-        display: none;
-      }
-
-      /* --- NEW STYLES for Site List --- */
-      hr {
-        border: 0;
-        border-top: 1px solid #eee;
-        margin: 20px 0;
-      }
-
-      .site-list-container {
-        text-align: left;
-      }
-      .site-list-container h4 {
-        font-size: 16px;
-        font-weight: 600;
-        margin: 0 0 10px 0;
-        text-align: center;
-      }
-      .site-list {
-        max-height: 100px;
-        overflow-y: auto;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 10px;
-        margin-bottom: 10px;
-        background: #f9f9f9;
-      }
-      .site-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px;
-        font-size: 14px;
-        border-bottom: 1px solid #f0f0f0;
-      }
-      .site-item:last-child {
-        border-bottom: none;
-      }
-      .site-item span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      .remove-site-btn {
-        background: none;
-        border: none;
-        color: #d93025;
-        cursor: pointer;
-        font-weight: bold;
-        font-size: 18px;
-        padding: 0 5px;
-      }
-
-      .add-site-form {
-        display: flex;
-        gap: 5px;
-      }
-      #siteInput {
-        flex-grow: 1;
-        padding: 8px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        font-family: "Poppins";
-      }
-      #addSiteButton {
-        width: auto;
-        padding: 8px 14px;
-        background-color: #007bff;
-        font-size: 18px;
-      }
-      #addSiteButton:hover {
-        background-color: #0056b3;
-      }
+        /* ... all other styles for site list ... */
+        hr { border: 0; border-top: 1px solid #eee; margin: 20px 0; }
+        .site-list-container { text-align: left; }
+        .site-list-container h4 { font-size: 16px; font-weight: 600; margin: 0 0 10px 0; text-align: center; }
+        .site-list { max-height: 100px; overflow-y: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px; margin-bottom: 10px; background: #f9f9f9; }
+        .site-item { display: flex; justify-content: space-between; align-items: center; padding: 5px; font-size: 14px; border-bottom: 1px solid #f0f0f0; }
+        .site-item:last-child { border-bottom: none; }
+        .site-item span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .remove-site-btn { background: none; border: none; color: #d93025; cursor: pointer; font-weight: bold; font-size: 18px; padding: 0 5px; }
+        .add-site-form { display: flex; gap: 5px; }
+        #siteInput { flex-grow: 1; padding: 8px; border-radius: 5px; border: 1px solid #ccc; font-family: 'Poppins'; }
+        #addSiteButton { width: auto; padding: 8px 14px; background-color: #007bff; font-size: 18px; }
+        #addSiteButton:hover { background-color: #0056b3; }
     </style>
-  </head>
-  <body>
-    <img src="icon.png" alt="Focus Icon" />
+</head>
+<body>
+    <img src="icon.png" alt="Focus Icon">
     <h3>Focus Shield</h3>
 
     <div id="active-view" class="hidden">
-      <div id="timer-display" class="hidden">
-        <span id="hours-box" class="time-box">00</span>
-        <span class="separator">:</span>
-        <span id="mins-box" class="time-box">00</span>
-        <span class="separator">:</span>
-        <span id="secs-box" class="time-box">00</span>
-      </div>
-      <div id="status" class="on">Focus is ON</div>
-      <button id="stopButton">Stop Focus Now</button>
+        <div id="timer-display" class="hidden"> <span id="hours-box" class="time-box">00</span>
+            <span class="separator">:</span>
+            <span id="mins-box" class="time-box">00</span>
+            <span class="separator">:</span>
+            <span id="secs-box" class="time-box">00</span>
+        </div>
+        <div id="active-status">Focus is ON</div>
+        <button id="stopButton">Stop Focus Now</button>
     </div>
 
     <div id="setup-view">
-      <div id="status" class="off">Focus is OFF</div>
-      <input
-        type="number"
-        id="timeInput"
-        placeholder="Minutes (optional)"
-        min="1"
-      />
-      <button id="startButton">Start Focus</button>
+        <div id="setup-status">Focus is OFF</div>
+        <input type="number" id="timeInput" placeholder="Minutes (optional)" min="1">
+        <button id="startButton">Start Focus</button>
     </div>
-
-    <hr />
+    
+    <hr>
 
     <div class="site-list-container">
-      <h4>Blocked Sites</h4>
-      <div class="site-list" id="siteListDisplay"></div>
-      <div class="add-site-form">
-        <input type="text" id="siteInput" placeholder="e.g., reddit.com" />
-        <button id="addSiteButton">+</button>
-      </div>
+        <h4>Blocked Sites</h4>
+        <div class="site-list" id="siteListDisplay"></div>
+        <div class="add-site-form">
+            <input type="text" id="siteInput" placeholder="e.g., reddit.com">
+            <button id="addSiteButton">+</button>
+        </div>
     </div>
 
     <script src="popup.js"></script>
-  </body>
+</body>
 </html>
