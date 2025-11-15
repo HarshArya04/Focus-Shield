@@ -21,9 +21,6 @@ Built in 48 hours for the **Student Hackpad (Nov 2025)** hackathon.
 
 ## 🎞️ Demo
 
-*(This is the **most important** part for the judges!)*
-
-**I recommend you record a 30-second GIF** (you can use a tool like [Ezgif.com](https://ezgif.com/video-to-gif)) that shows you doing this:
 1.  Clicking the extension icon.
 2.  Adding `twitter.com` to the blocklist.
 3.  Entering `1` (for 1 minute) and starting a focus session.
@@ -34,8 +31,6 @@ Built in 48 hours for the **Student Hackpad (Nov 2025)** hackathon.
 ``
 
 ## 🛠️ How to Install (for Hackathon Judges)
-
-Since this is not yet on the Chrome Web Store, you can load it manually:
 
 1.  **Download:** Download this project as a ZIP file and unzip it, or clone the repository.
 2.  **Open Extensions:** Open Chrome and navigate to `chrome://extensions`.
