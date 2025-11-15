@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Student Focus Shield",
+  "version": "1.1",
+  "description": "Blocks distracting sites during focus time.",
+  "permissions": [
+    "tabs",
+    "storage",
+    "alarms"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "128": "icon.png"
+  }
+}

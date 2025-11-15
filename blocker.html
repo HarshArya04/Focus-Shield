@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Focus Mode ON</title>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Mono:wght@700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            box-sizing: border-box;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 28px;
+            color: #d93025; /* Red */
+            font-weight: 600;
+            margin: 0 0 10px 0;
+        }
+        p.message {
+            font-size: 18px;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        /* Countdown Timer */
+        #timer-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .time-box {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 32px;
+            font-weight: 700;
+            color: #d93025;
+            background-color: #e0e0e0;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin: 0 3px;
+            min-width: 40px; /* Wider boxes */
+        }
+        .separator {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 32px;
+            font-weight: 700;
+            color: #d93025;
+            padding: 0 4px;
+        }
+        .timer-label {
+            font-size: 12px;
+            color: #555;
+            margin-top: 5px;
+            display: block;
+        }
+        /* End Countdown Timer */
+
+        /* Quote Box */
+        .quote-box {
+            background-color: #f0f8ff; /* Light blue */
+            border-left: 5px solid #007bff;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+            text-align: left;
+            font-style: italic;
+            color: #555;
+            max-width: 80%; /* Don't make it too wide */
+        }
+        .quote-author {
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: right;
+            color: #777;
+        }
+        /* End Quote Box */
+
+        button {
+            margin-top: 30px;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #007bff; /* Blue */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="icon.png" alt="Focus Icon"> 
+        <h1>Focus Mode is ON</h1>
+        <p class="message">You're doing great! Only this much time left:</p>
+
+        
+<div id="timer-display">
+            <div>
+                <span id="hours-box" class="time-box">00</span>
+                <span class="timer-label">HRS</span>
+            </div>
+            <span class="separator">:</span>
+            <div>
+                <span id="mins-box" class="time-box">00</span>
+                <span class="timer-label">MINS</span>
+            </div>
+            <span class="separator">:</span>
+            <div>
+                <span id="secs-box" class="time-box">00</span>
+                <span class="timer-label">SECS</span>
+            </div>
+        </div>
+        
+<div class="quote-box">
+            <div id="quote-text">"The mind is not a vessel to be filled, but a fire to be kindled."</div>
+            <div id="quote-author" class="quote-author">- Plutarch</div>
+        </div>
+        
+<button id="goBackButton">Go Back</button>
+    </div>
+
+    <script src="blocker.js"></script>
+
+</body>
+</html>
