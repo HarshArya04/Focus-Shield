@@ -21,7 +21,7 @@ Built in 48 hours for the **Student Hackpad (Nov 2025)** hackathon.
 
 ## 🎞️ Demo
 
-Z:\Projects\focus-blocker\demo.gif
+![Demo GIF](demo.gif)
 
 1.  Clicking the extension icon.
 2.  Adding `twitter.com` to the blocklist.
