@@ -51,6 +51,9 @@ Since this is not yet on the Chrome Web Store, you can load it manually:
 * **Chrome Extension API (Manifest V3)**
 
 ---
+## Acknowledgements
+
+* Focus, Shield, and Study icons used in this project were created by **prosymbols** from [Flaticon](https://www.flaticon.com/authors/prosymbols).
 
 ## 📜 License
 
