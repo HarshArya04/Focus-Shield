@@ -15,7 +15,6 @@
         img { width: 50px; height: 50px; margin-bottom: 10px; }
         h3 { font-size: 18px; font-weight: 600; margin: 0 0 15px 0; }
         
-        
         #timer-display { display: flex; justify-content: center; align-items: center; margin-bottom: 15px; }
         .time-box { font-family: 'Roboto Mono', monospace; font-size: 28px; font-weight: 700; color: #d93025; background-color: #f0f0f0; padding: 10px 8px; border-radius: 5px; margin: 0 2px; min-width: 20px; }
         .separator { font-family: 'Roboto Mono', monospace; font-size: 28px; font-weight: 700; color: #d93025; padding: 0 2px; }
@@ -25,8 +24,15 @@
             font-weight: 600;
             margin-bottom: 15px;
         }
-        #active-status { color: #d93025; } 
+        #active-status { color: #d93025; }
         #setup-status { color: #4CAF50; } 
+        
+        .phone-reminder {
+            font-size: 13px;
+            color: #555;
+            font-style: italic;
+            margin: -5px 10px 15px 10px;
+        }
 
         input[type="number"] { width: 100%; padding: 10px; box-sizing: border-box; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 15px; font-family: 'Poppins', sans-serif; text-align: center; }
         
@@ -57,7 +63,8 @@
     <h3>Focus Shield</h3>
 
     <div id="active-view" class="hidden">
-        <div id="timer-display" class="hidden"> <span id="hours-box" class="time-box">00</span>
+        <div id="timer-display" class="hidden">
+            <span id="hours-box" class="time-box">00</span>
             <span class="separator">:</span>
             <span id="mins-box" class="time-box">00</span>
             <span class="separator">:</span>
@@ -70,6 +77,10 @@
     <div id="setup-view">
         <div id="setup-status">Focus is OFF</div>
         <input type="number" id="timeInput" placeholder="Minutes (optional)" min="1">
+        
+        <p class="phone-reminder">
+            Please put your phone in focus mode too, for full attention!
+        </p>
         <button id="startButton">Start Focus</button>
     </div>
     
